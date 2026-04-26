@@ -6,7 +6,7 @@ import Image from 'next/image';
 import NavLink from './NavLink';
 const Navbar = () => {
     return (
-        <div className='w-11/12 mx-auto flex  justify-between items-center my-5'>
+        <div className='w-11/12 mx-auto flex  justify-between items-center my-3'>
             <ul className='flex justify-center items-center gap-5 flex-2'>
                 <li className='text-[16px] text-[#706F6F]'>
                     <NavLink href={"/"}>Home</NavLink>
