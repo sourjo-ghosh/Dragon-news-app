@@ -1,21 +1,8 @@
 import Category from "@/app/components/homePage/Category";
 import News from "@/app/components/homePage/News";
 import LoginSection from "@/app/components/homePage/LoginSection";
+import { getALlCategory, getNewsByCategory } from "@/lib/data";
 
-const getALlCategory = async () => {
-  const res = await fetch(
-    "https://openapi.programming-hero.com/api/news/categories",
-  );
-  const data = await res.json();
-  return data.data;
-};
-const getNewsByCategory = async (id) => {
-  const res = await fetch(
-    `https://openapi.programming-hero.com/api/news/category/${id}`,
-  );
-  const data = await res.json();
-  return data.data;
-};
 const NewsCategoryPage = async ({ params }) => {
   const { id } = await params;
   const news = await getNewsByCategory(id);
