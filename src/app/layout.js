@@ -7,8 +7,8 @@ const playFairDisplay = Playfair_Display({
   weight: ["400", "500", "800"]
 });
 export const metadata = {
-  title: "The Dragon News",
-  description: "The Dragon News Home Page",
+  title: "Dragon News | Home",
+  description: "The best news portal in Bangladesh",
 };
 
 export default function RootLayout({ children }) {

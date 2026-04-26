@@ -24,6 +24,10 @@ const openings = [
   },
 ];
 
+export const metadata = {
+  title: "Dragon News | Career",
+};
+
 const CareerPage = () => {
   return (
     <main className="bg-zinc-50 py-12 dark:bg-black">

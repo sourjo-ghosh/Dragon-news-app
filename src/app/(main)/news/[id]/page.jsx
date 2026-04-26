@@ -14,7 +14,21 @@ const formatDate = (dateString) => {
     year: "numeric",
   });
 };
+export const generateMetadata = async ({ params }) => {
+  const { id } = await params;
 
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/news/${id}`,
+  );
+  const NewsData = await res.json();
+
+  const NewsTitle = NewsData?.data[0].title;
+  const NewsDescription = NewsData?.data[0].details;
+  return {
+    title: NewsTitle,
+    description: NewsDescription,
+  };
+};
 const NewsDetailsPage = async ({ params }) => {
   const { id } = await params;
   const res = await fetch(
@@ -42,14 +56,11 @@ const NewsDetailsPage = async ({ params }) => {
           </h2>
 
           <p className="mb-4 text-sm font-medium text-[#706F6F]">
-            {formatDate(data?.author?.published_date)} | Tag Cloud Tags:
-            {" "}
+            {formatDate(data?.author?.published_date)} | Tag Cloud Tags:{" "}
             {data?.author?.name || "Unknown"}
           </p>
 
-          <p className="text-base leading-8 text-[#706F6F]">
-            {data?.details}
-          </p>
+          <p className="text-base leading-8 text-[#706F6F]">{data?.details}</p>
 
           <Link
             href={`/category/${categoryId}`}
@@ -69,5 +80,3 @@ const NewsDetailsPage = async ({ params }) => {
 };
 
 export default NewsDetailsPage;
-
-

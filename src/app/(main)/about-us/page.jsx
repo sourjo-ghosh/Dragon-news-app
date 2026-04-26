@@ -1,5 +1,9 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "Dragon News | About Us",
+};
+
 const AboutUsPage = () => {
   const values = [
     {
