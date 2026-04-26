@@ -68,10 +68,9 @@ const News = ({ item }) => {
           className="mb-4 h-auto w-full rounded-md object-cover"
         />
 
-        <p className="text-lg leading-8 text-gray-600">
-          <p className="line-clamp-2">
-            {details}
-          </p>
+        <p className="line-clamp-3 text-lg leading-8 text-gray-600">
+          <span className="line-clamp-3">{details}</span>
+
           <span className="cursor-pointer font-semibold text-orange-500">
             <Link href={`/news/${item._id}`}>See Details</Link>
           </span>
