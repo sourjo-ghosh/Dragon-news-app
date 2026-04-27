@@ -11,8 +11,8 @@ const Header = () => {
     return (
         <div className='flex flex-col gap-2 justify-center items-center p-6'>
             <Image src={logo} alt='page header logo' width={450} height={450}></Image>
-            <p className='text-[#706F6F]'>Journalism Without Fear or Favour</p>
-            <p className='text-[#706F6F] text-[18px]'><span className='text-[#403F3F]'>{OnlyDayTime}</span> {withoutDay}</p>
+            <p className='text-gray-600 dark:text-gray-400'>Journalism Without Fear or Favour</p>
+            <p className='text-gray-600 dark:text-gray-400 text-[18px]'><span className='text-black dark:text-white'>{OnlyDayTime}</span> {withoutDay}</p>
         </div>
     );
 };

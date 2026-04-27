@@ -1,15 +1,18 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
+import { Eye, EyeSlash } from "@gravity-ui/icons";
 import {
   Button,
   Description,
   FieldError,
   Form,
   Input,
+  InputGroup,
   Label,
   TextField,
 } from "@heroui/react";
 import Link from "next/link";
+import { useState } from "react";
 
 const LoginPage = () => {
   const onSubmit = async (e) => {
@@ -24,21 +27,23 @@ const LoginPage = () => {
       rememberMe: true,
       callbackURL: "/",
     });
-    if(error){
-      alert(error.message)
+    if (error) {
+      alert(error.message);
     }
-    if(data){
-      alert("Login Successful")
+    if (data) {
+      alert("Login Successful");
     }
-    console.log(data, error)
+    console.log(data, error);
   };
+  const [isVisible, setIsVisible] = useState(false);
+
   return (
-    <div className="mx-auto flex min-h-[80vh] w-full items-center justify-center bg-gray-100 px-4 py-8 sm:px-6 sm:py-10">
-      <div className="w-full max-w-xl rounded-2xl bg-white px-5 py-7 shadow-sm sm:px-8 sm:py-10">
-        <h2 className="mb-2 text-center text-3xl font-bold text-[#403F3F]">
+    <div className="mx-auto flex min-h-[80vh] w-full items-center justify-center bg-gray-100 dark:bg-zinc-800 px-4 py-8 sm:px-6 sm:py-10">
+      <div className="w-full max-w-xl rounded-2xl bg-white dark:bg-zinc-900 px-5 py-7 shadow-sm sm:px-8 sm:py-10">
+        <h2 className="mb-2 text-center text-3xl font-bold text-black dark:text-white">
           Login your account
         </h2>
-        <p className="mb-8 text-center text-sm text-[#706F6F]">
+        <p className="mb-8 text-center text-sm text-gray-600 dark:text-gray-400">
           Welcome back! Please enter your details.
         </p>
         <Form
@@ -57,7 +62,7 @@ const LoginPage = () => {
               return null;
             }}
           >
-            <Label className="text-base font-semibold text-[#403F3F]">
+            <Label className="text-base font-semibold text-black dark:text-white">
               Email
             </Label>
             <Input
@@ -84,11 +89,32 @@ const LoginPage = () => {
               return null;
             }}
           >
-            <Label className="text-base font-semibold text-[#403F3F]">
+            <Label className="text-base font-semibold text-black dark:text-white">
               Password
             </Label>
-            <Input className="text-base" placeholder="Enter your password" />
-            <Description className="text-sm text-[#706F6F]">
+            <InputGroup className="flex justify-between items-center">
+              <InputGroup.Input
+                className="w-full max-w-70"
+                type={isVisible ? "text" : "password"}
+                placeholder="Enter Your Password"
+              />
+              <InputGroup.Suffix>
+                <Button
+                  isIconOnly
+                  aria-label={isVisible ? "Hide password" : "Show password"}
+                  size="sm"
+                  variant="ghost"
+                  onPress={() => setIsVisible(!isVisible)}
+                >
+                  {isVisible ? (
+                    <Eye className="size-4" />
+                  ) : (
+                    <EyeSlash className="size-4" />
+                  )}
+                </Button>
+              </InputGroup.Suffix>
+            </InputGroup>
+            <Description className="text-sm text-gray-600 dark:text-gray-400">
               Must be at least 8 characters with 1 uppercase and 1 number
             </Description>
             <FieldError />
@@ -97,7 +123,7 @@ const LoginPage = () => {
             <Button type="submit" className="w-full bg-[#403F3F] text-white">
               Login
             </Button>
-            <p className="text-center text-sm font-medium text-[#706F6F]">
+            <p className="text-center text-sm font-medium text-gray-600 dark:text-gray-400">
               Don&apos;t have an account?{" "}
               <span className="bg-linear-to-r from-[#F75B5F] to-[#FF8C47] bg-clip-text text-transparent">
                 <Link href="/signup">Register</Link>

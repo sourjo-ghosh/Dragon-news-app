@@ -46,11 +46,11 @@ const news = [
 
 const BreakingNews = () => {
   return (
-    <div className="flex justify-between items-center gap-5 w-11/12 mx-auto bg-[#F3F3F3] p-3">
+    <div className="flex justify-between items-center gap-5 w-11/12 mx-auto bg-gray-100 dark:bg-zinc-800 p-3 rounded-sm">
       <Button className="rounded-none bg-[#D72050] text-[#ffffff]">
         Latest News
       </Button>
-      <Marquee pauseOnHover={true}>
+      <Marquee pauseOnHover={true} className="text-black dark:text-white">
         {news.map((n) => {
           return <span key={n._id}>{n.title}</span>;
         })}

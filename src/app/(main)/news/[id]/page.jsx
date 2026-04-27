@@ -41,8 +41,8 @@ const NewsDetailsPage = async ({ params }) => {
   return (
     <div className="mx-auto my-10 grid w-11/12 grid-cols-1 gap-6 md:grid-cols-12">
       <div className="md:col-span-9">
-        <h1 className="mb-5 text-xl font-bold text-[#403F3F]">Dragon News</h1>
-        <div className="overflow-hidden rounded border border-[#E7E7E7] bg-white p-4 md:p-6">
+        <h1 className="mb-5 text-xl font-bold text-black dark:text-white">Dragon News</h1>
+        <div className="overflow-hidden rounded border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 p-4 md:p-6">
           <Image
             src={data?.image_url}
             alt={data?.title || "News cover"}
@@ -51,16 +51,16 @@ const NewsDetailsPage = async ({ params }) => {
             className="mb-5 h-auto w-full rounded object-cover"
           />
 
-          <h2 className="mb-3 text-2xl font-bold leading-tight text-[#403F3F]">
+          <h2 className="mb-3 text-2xl font-bold leading-tight text-black dark:text-white">
             {data?.title}
           </h2>
 
-          <p className="mb-4 text-sm font-medium text-[#706F6F]">
+          <p className="mb-4 text-sm font-medium text-gray-600 dark:text-gray-400">
             {formatDate(data?.author?.published_date)} | Tag Cloud Tags:{" "}
             {data?.author?.name || "Unknown"}
           </p>
 
-          <p className="text-base leading-8 text-[#706F6F]">{data?.details}</p>
+          <p className="text-base leading-8 text-gray-600 dark:text-gray-400">{data?.details}</p>
 
           <Link
             href={`/category/${categoryId}`}
@@ -72,7 +72,7 @@ const NewsDetailsPage = async ({ params }) => {
       </div>
 
       <div className="md:col-span-3">
-        <h1 className="mb-4 text-xl font-bold text-[#403F3F]">Login In</h1>
+        <h1 className="mb-4 text-xl font-bold text-black dark:text-white">Login In</h1>
         <LoginSection />
       </div>
     </div>

@@ -9,7 +9,7 @@ const Category = ({ categories, activeId }) => {
         {categories.map((category) => {
           return (
             <li
-              className={`${activeId === category.category_id ? "text-[#403F3F] bg-[#E7E7E7] font-bold" : "text-[#9F9F9F]"} rounded-[3px] p-1  w-50`}
+              className={`${activeId === category.category_id ? "text-black dark:text-white bg-gray-200 dark:bg-zinc-800 font-bold" : "text-gray-600 dark:text-gray-400"} rounded-[3px] p-1 w-50`}
               key={category.category_id}
             >
               <Link href={`/category/${category.category_id}`} className="block">{category.category_name}</Link>

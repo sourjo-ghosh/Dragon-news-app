@@ -11,21 +11,21 @@ const NewsCategoryPage = async ({ params }) => {
   return (
     <div className="mx-auto my-10 grid w-11/12 grid-cols-1 gap-6 md:grid-cols-12">
       <div className="md:col-span-3">
-        <h1 className="mb-4 text-xl font-bold">All Category</h1>
+        <h1 className="mb-4 text-xl font-bold text-black dark:text-white">All Category</h1>
         <Category categories={categories} activeId={id} />
       </div>
       <div className="md:col-span-6">
-        <h1 className="mb-4 text-xl font-bold">Dragon News Home</h1>
+        <h1 className="mb-4 text-xl font-bold text-black dark:text-white">Dragon News Home</h1>
         <div className="space-y-6">
           {news.length > 0 ? (
             news?.map((item) => <News key={item._id} item={item} />)
           ) : (
-            <h2 className="text-2xl font-bold my-7">No News found!</h2>
+            <h2 className="text-2xl font-bold my-7 text-black dark:text-white">No News found!</h2>
           )}
         </div>
       </div>
       <div className="md:col-span-3">
-        <h1 className="mb-4 text-xl font-bold">Login In</h1>
+        <h1 className="mb-4 text-xl font-bold text-black dark:text-white">Login In</h1>
         <LoginSection />
       </div>
     </div>

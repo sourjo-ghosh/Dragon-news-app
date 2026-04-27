@@ -14,7 +14,7 @@ const loginSection = () => {
     <div className="space-y-3 my-5">
       <Link
         href={"/"}
-        className="bg-white text-blue-500 text-xl border border-blue-400 rounded-xl flex justify-center items-center gap-2 py-1"
+        className="bg-white dark:bg-zinc-900 text-blue-500 text-xl border border-blue-400 dark:border-zinc-700 rounded-xl flex justify-center items-center gap-2 py-1"
       >
         <Image
           src={googleIcon}
@@ -26,7 +26,7 @@ const loginSection = () => {
       </Link>
       <Link
         href={"/"}
-        className="bg-white text-black text-xl border border-gray-400 rounded-xl flex justify-center items-center gap-2 py-1"
+        className="bg-white dark:bg-zinc-900 text-black dark:text-white text-xl border border-gray-400 dark:border-zinc-700 rounded-xl flex justify-center items-center gap-2 py-1"
       >
         <Image
           src={githubIcon}
@@ -36,15 +36,15 @@ const loginSection = () => {
         ></Image>
         Login with Github
       </Link>
-      <h1 className="text-xl font-bold">Find Us On</h1>
+      <h1 className="text-xl font-bold text-black dark:text-white">Find Us On</h1>
       <ul>
         <li>
           <a
             href="https://www.facebook.com/Joy.Ghosh.Sourjo"
             target="_blank"
-            className="p-3 border-2 border-gray-200 flex items-center gap-2 w-full"
+            className="p-3 border-2 border-gray-200 dark:border-zinc-700 flex items-center gap-2 w-full text-black dark:text-white"
           >
-            <div className="bg-gray-200 p-2 rounded-full">
+            <div className="bg-gray-200 dark:bg-zinc-800 p-2 rounded-full">
               <Image src={fbIcon} alt="facebook symbol"></Image>
             </div>
             Facebook
@@ -54,9 +54,9 @@ const loginSection = () => {
           <a
             href="https://x.com/Joy_Ghoshsourjo"
             target="_blank"
-            className="p-3 border-t-0 border-2 border-gray-200 flex items-center gap-2 w-full"
+            className="p-3 border-t-0 border-2 border-gray-200 dark:border-zinc-700 flex items-center gap-2 w-full text-black dark:text-white"
           >
-            <div className="bg-gray-200 p-2 rounded-full">
+            <div className="bg-gray-200 dark:bg-zinc-800 p-2 rounded-full">
               <Image src={twitterIcon} alt="facebook symbol"></Image>
             </div>
             Twitter
@@ -66,9 +66,9 @@ const loginSection = () => {
           <a
             href="https://www.instagram.com/sourjo__ghosh/"
             target="_blank"
-            className="p-3 border-t-0 border-2 border-gray-200 flex items-center gap-2 w-full"
+            className="p-3 border-t-0 border-2 border-gray-200 dark:border-zinc-700 flex items-center gap-2 w-full text-black dark:text-white"
           >
-            <div className="bg-gray-200 p-2 rounded-full">
+            <div className="bg-gray-200 dark:bg-zinc-800 p-2 rounded-full">
               <Image src={instagramIcon} alt="facebook symbol"></Image>
             </div>
             Instagram
@@ -76,8 +76,8 @@ const loginSection = () => {
         </li>
       </ul>
       <div>
-        <div className="bg-gray-200 p-3 rounded-sm">
-          <h1 className="text-2xl font-bold">Q-Zone</h1>
+        <div className="bg-gray-200 dark:bg-zinc-800 p-3 rounded-sm">
+          <h1 className="text-2xl font-bold text-black dark:text-white">Q-Zone</h1>
           <div>
             <ul className="flex justify-center items-center">
               <li>
