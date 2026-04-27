@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -11,14 +12,28 @@ import {
 import Link from "next/link";
 
 const SignUpPage = () => {
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const name = formData.get("name");
     const photoUrl = formData.get("photoURL");
     const email = formData.get("email");
     const password = formData.get("password");
-    console.log(name, photoUrl, email, password)
+    console.log(name, photoUrl, email, password);
+    const { data, error } = await authClient.signUp.email({
+      name: name, // required
+      email: email, // required
+      password: password, // required
+      image: photoUrl,
+      callbackURL: "/",
+    });
+    if(error){
+      alert(`${error.message}`)
+    }
+    if(data){
+      alert('Registration successful')
+    }
+    console.log(data, error)
   };
 
   return (
@@ -44,7 +59,7 @@ const SignUpPage = () => {
             <FieldError />
           </TextField>
 
-          <TextField isRequired name="photoURL" type="url">
+          <TextField name="photoURL" type="text">
             <Label className="text-base font-semibold text-[#403F3F]">
               Photo URL
             </Label>

@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -11,13 +12,25 @@ import {
 import Link from "next/link";
 
 const LoginPage = () => {
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const email = formData.get('email')
-    const password = formData.get('password')
-    console.log(email, password)
-    
+    const email = formData.get("email");
+    const password = formData.get("password");
+    console.log(email, password);
+    const { data, error } = await authClient.signIn.email({
+      email: email, // required
+      password: password, // required
+      rememberMe: true,
+      callbackURL: "/",
+    });
+    if(error){
+      alert(error.message)
+    }
+    if(data){
+      alert("Login Successful")
+    }
+    console.log(data, error)
   };
   return (
     <div className="mx-auto flex min-h-[80vh] w-full items-center justify-center bg-gray-100 px-4 py-8 sm:px-6 sm:py-10">
@@ -44,8 +57,13 @@ const LoginPage = () => {
               return null;
             }}
           >
-            <Label className="text-base font-semibold text-[#403F3F]">Email</Label>
-            <Input className="text-base" placeholder="Enter your email address" />
+            <Label className="text-base font-semibold text-[#403F3F]">
+              Email
+            </Label>
+            <Input
+              className="text-base"
+              placeholder="Enter your email address"
+            />
             <FieldError />
           </TextField>
           <TextField
