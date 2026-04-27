@@ -29,7 +29,7 @@ const Navbar = () => {
         {isPending ? (
           <Spinner size="lg" />
         ) : session ? (
-          <div className="flex justify-between items-center gap-4">
+        <div className="flex justify-between items-center gap-2">
             <h2 className="hidden md:flex lg:flex text-black dark:text-white">
               Hello, {user?.name}
             </h2>
