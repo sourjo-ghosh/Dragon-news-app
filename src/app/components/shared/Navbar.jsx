@@ -1,5 +1,5 @@
 "use client";
-import {Switch} from "@heroui/react";
+import { Switch, Toast } from "@heroui/react";
 import { Button, Spinner } from "@heroui/react";
 import person from "@/assets/user.png";
 import Link from "next/link";
@@ -12,7 +12,6 @@ const Navbar = () => {
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
   const { theme, setTheme } = useTheme();
-  const isDark = theme === "dark";
   return (
     <div className="w-11/12 mx-auto flex justify-between items-center my-3">
       <ul className="flex justify-center items-center gap-5 md:flex-2 lg:flex-2">
@@ -31,7 +30,9 @@ const Navbar = () => {
           <Spinner size="lg" />
         ) : session ? (
           <div className="flex justify-between items-center gap-4">
-            <h2 className="hidden md:flex lg:flex text-black dark:text-white">Hello, {user?.name}</h2>
+            <h2 className="hidden md:flex lg:flex text-black dark:text-white">
+              Hello, {user?.name}
+            </h2>
             <Image
               src={user?.image || person}
               alt={user?.name}
@@ -53,6 +54,7 @@ const Navbar = () => {
               alt="person avatar"
               width={35}
               height={35}
+              className="bg-none"
             ></Image>
             <Link href="/login">
               <Button className="rounded-none bg-[#403F3F] text-white">

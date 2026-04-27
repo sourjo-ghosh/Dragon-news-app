@@ -1,6 +1,6 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
-import { Eye, EyeSlash } from "@gravity-ui/icons";
+import { ArrowRightToSquare, Eye, EyeSlash } from "@gravity-ui/icons";
 import {
   Button,
   Description,
@@ -13,6 +13,7 @@ import {
 } from "@heroui/react";
 import Link from "next/link";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const onSubmit = async (e) => {
@@ -20,7 +21,7 @@ const LoginPage = () => {
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email");
     const password = formData.get("password");
-    console.log(email, password);
+
     const { data, error } = await authClient.signIn.email({
       email: email, // required
       password: password, // required
@@ -28,12 +29,26 @@ const LoginPage = () => {
       callbackURL: "/",
     });
     if (error) {
-      alert(error.message);
+      toast.custom(
+        <div className="flex justify-center items-center gap-5 text-gray-800 dark:text-gray-400 bg-gray-100 dark:bg-zinc-900 p-3 rounded-2xl">
+          <ArrowRightToSquare />
+          <div>
+            <p>{error.message}</p>
+          </div>
+        </div>,
+      );
     }
     if (data) {
-      alert("Login Successful");
+      toast.custom(
+        <div className="flex justify-center items-center gap-5 text-gray-800 dark:text-gray-400 bg-gray-100 dark:bg-zinc-900 p-3 rounded-2xl">
+          <ArrowRightToSquare />
+          <div>
+            <h1>Login successful</h1>
+            <p>Welcome back.</p>
+          </div>
+        </div>,
+      );
     }
-    console.log(data, error);
   };
   const [isVisible, setIsVisible] = useState(false);
 

@@ -1,7 +1,7 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import { Eye, EyeSlash } from "@gravity-ui/icons";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   Button,
   Description,
@@ -12,10 +12,26 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import { ArrowRightToSquare } from "@gravity-ui/icons";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const SignUpPage = () => {
+  const searchParams = useSearchParams();
+  const message = searchParams.get("message");
+  useEffect(() => {
+    if (message !== "please-login") return;
+    toast.custom(
+      <div className="flex justify-center items-center gap-5 text-gray-800 dark:text-gray-400 bg-gray-100 dark:bg-zinc-900 p-3 rounded-2xl">
+        <ArrowRightToSquare />
+        <div>
+          <h1>Login First </h1>
+          <p>Please log in first to view this page!</p>
+        </div>
+      </div>,
+    );
+  }, [message]);
   const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +40,7 @@ const SignUpPage = () => {
     const photoUrl = formData.get("photoURL");
     const email = formData.get("email");
     const password = formData.get("password");
-    console.log(name, photoUrl, email, password);
+
     const { data, error } = await authClient.signUp.email({
       name: name, // required
       email: email, // required
@@ -32,14 +48,30 @@ const SignUpPage = () => {
       image: photoUrl,
     });
     if (error) {
-      alert(`${error.message}`);
+      toast.custom(
+        <div className="flex justify-center items-center gap-5 text-gray-800 dark:text-gray-400 bg-gray-100 dark:bg-zinc-900 p-3 rounded-2xl">
+          <ArrowRightToSquare />
+          <div>
+            <h1>Signup failed</h1>
+            <p>{error.message}</p>
+          </div>
+        </div>,
+      );
+      return;
     }
     if (data) {
       await authClient.signOut();
-      alert("Registration successful");
-      router.push("/login")
+      toast.custom(
+        <div className="flex justify-center items-center gap-5 text-gray-800 dark:text-gray-400 bg-gray-100 dark:bg-zinc-900 p-3 rounded-2xl">
+          <ArrowRightToSquare />
+          <div>
+            <h1>Signup successful</h1>
+            <p>Your account was created. You can log in now.</p>
+          </div>
+        </div>,
+      );
+      router.push("/login");
     }
-    console.log(data, error);
   };
   const [isVisible, setIsVisible] = useState(false);
   return (
