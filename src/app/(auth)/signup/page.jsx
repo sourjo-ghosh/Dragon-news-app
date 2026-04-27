@@ -13,11 +13,12 @@ import {
   TextField,
 } from "@heroui/react";
 import { ArrowRightToSquare } from "@gravity-ui/icons";
+import AuthPageSkeleton from "@/app/components/shared/AuthPageSkeleton";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-const SignUpPage = () => {
+function SignUpContent() {
   const searchParams = useSearchParams();
   const message = searchParams.get("message");
   useEffect(() => {
@@ -190,6 +191,12 @@ const SignUpPage = () => {
       </div>
     </div>
   );
-};
+}
 
-export default SignUpPage;
+export default function SignUpPage() {
+  return (
+    <Suspense fallback={<AuthPageSkeleton />}>
+      <SignUpContent />
+    </Suspense>
+  );
+}
