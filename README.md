@@ -2,6 +2,9 @@
 
 A modern news portal built with Next.js App Router, featuring category-wise news browsing, article detail pages, social/email authentication, and protected routes for selected sections.
 
+<img width="1436" height="780" alt="Screenshot From 2026-04-28 20-41-08" src="https://github.com/user-attachments/assets/55b413b2-cb74-4f2c-a0d3-01c216e54eb5" />
+
+
 ## Overview
 
 Dragon News App fetches live news data from the Programming Hero news API and presents it in a clean, responsive interface with light/dark theme support.  
