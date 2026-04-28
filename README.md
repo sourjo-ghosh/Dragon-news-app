@@ -82,7 +82,7 @@ GITHUB_CLIENT_SECRET=your_github_client_secret
 ### 1) Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/sourjo-ghosh/Dragon-news-app.git
 cd dragon-news-app
 ```
 
@@ -139,4 +139,3 @@ Minimum deployment requirements:
 ## License
 
 This project is for educational and portfolio use.  
-Add a license file (`LICENSE`) if you plan to open-source it publicly.
