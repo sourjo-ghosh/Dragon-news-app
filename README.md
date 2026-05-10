@@ -104,7 +104,7 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
-
+Live link [Live-Link](https://dragon-news-app-xi.vercel.app/category/01)
 ## Available Scripts
 
 - `npm run dev` - start local development server
